@@ -8,7 +8,9 @@ export class Song {
   name: string;
   duration: string;
   album: string;
+  authors: string;
   favourite: boolean;
+  cover: string;
 }
 
 @Injectable({
@@ -19,7 +21,7 @@ export class SongService {
   endpoint = 'http://localhost:8080/songs';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
   };
   
   constructor(private httpClient: HttpClient) { }
@@ -28,8 +30,10 @@ export class SongService {
     const data = new URLSearchParams();
     data.append("name",song.name);
     data.append("duration",song.duration);
+    data.append("authors",song.authors);
     data.append("album",song.album);
-    return this.httpClient.post<Song>(this.endpoint, JSON.stringify(song), this.httpOptions)
+    data.append("cover",song.cover);
+    return this.httpClient.post<Song>(this.endpoint, data.toString(), this.httpOptions)
       .pipe(
         catchError(this.handleError<Song>('Error occured'))
       );
@@ -52,7 +56,13 @@ export class SongService {
   }
 
   updateSong(id, song: Song): Observable<any> {
-    return this.httpClient.put(this.endpoint + '/' + id, JSON.stringify(song), this.httpOptions)
+    const data = new URLSearchParams();
+    data.append("name",song.name);
+    data.append("duration",song.duration);
+    data.append("authors",song.authors);
+    data.append("album",song.album);
+    data.append("cover",song.cover);
+    return this.httpClient.put(this.endpoint + '/' + id, data.toString(), this.httpOptions)
       .pipe(
         tap(_ => console.log(`Song updated: ${id}`)),
         catchError(this.handleError<Song[]>('Update song'))

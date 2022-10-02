@@ -1,6 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>songs</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button fill="outline" (click)="gotoAddSong()">
+        Añadir canción
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lista de canciones</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar canción"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -8,12 +16,21 @@
   <ion-list>
     <ion-item *ngFor="let s of songs">
       <ion-label>
-        <h1>{{s.name}}</h1>
+        <img src={{s.cover}}/>
+        <h1>{{s.id}}. {{s.name}}</h1>
         <p>{{s.duration}}</p>
         <p>{{s.authors}}</p>
         <p>{{s.album}}</p>
         <p>{{s.favourite}}</p>
       </ion-label>
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/update-song/',s.id]">
+          <ion-icon name="create" style="zoom:1.5"></ion-icon>
+        </button>
+        <button ion-button clear (click)="removeSong(s)">
+          <ion-icon name="trash" style="zoom:1.5"></ion-icon>
+        </button>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

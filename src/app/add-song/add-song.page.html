@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button fill="outline" (click)="gotoSongs()">
+        Cancelar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Añade una canción</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <form [formGroup]="songForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="name" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Duración</ion-label>
+        <ion-input formControlName="duration" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Autor o autores</ion-label>
+        <ion-input formControlName="authors" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Álbum</ion-label>
+        <ion-input formControlName="album" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">URL de la portada</ion-label>
+        <ion-input formControlName="cover" type="text"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" fill="outline" expand="block">
+            Añadir canción
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

@@ -15,6 +15,15 @@ const routes: Routes = [
     path: 'songs',
     loadChildren: () => import('./songs/songs.module').then( m => m.SongsPageModule)
   },
+  {
+    path: 'add-song',
+    loadChildren: () => import('./add-song/add-song.module').then( m => m.AddSongPageModule)
+  },
+  {
+    path: 'update-song',
+    loadChildren: () => import('./update-song/update-song.module').then( m => m.UpdateSongPageModule)
+  },
+
 ];
 
 @NgModule({
