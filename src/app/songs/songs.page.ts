@@ -27,22 +27,22 @@ export class SongsPage implements OnInit {
     });
   }
 
-  // ionViewDidEnter() {
-  //   this.songService.getSongs().subscribe((response) => {
-  //     this.Songs = response;
-  //   })
-  // }
+  ionViewDidEnter() {
+    this.songService.getSongs().subscribe((response) => {
+      this.songs = response;
+    })
+  }
 
-  // removeSong(song, i) {
-  //   if (window.confirm('Are you sure')) {
-  //     this.songService.deleteSong(song.id)
-  //     .subscribe(() => {
-  //         this.getAllSongs();
-  //         console.log('User deleted!')
-  //       }
-  //     )
-  //   }
-  // }
+  removeSong(song, i) {
+    if (window.confirm('Are you sure')) {
+      this.songService.deleteSong(song.id)
+      .subscribe(() => {
+          this.getAllSongs();
+          console.log('User deleted!')
+        }
+      )
+    }
+  }
 
   gotoAddSong() {
     this.router.navigateByUrl("/add-song");
