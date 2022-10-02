@@ -1,0 +1,12 @@
+ion-toolbar {
+  --background: rgb(74, 6, 6);
+}
+
+ion-button {
+  --color: initial;
+  --background: rgb(74, 6, 6);
+  --background-activated: transparent;
+  --background-focused: currentColor;
+  --background-hover: currentColor;
+  --border-color: currentColor;
+}

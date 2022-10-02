@@ -37,6 +37,7 @@ export class AddSongPage implements OnInit {
         .subscribe((response) => {
           this.zone.run(() => {
             this.songForm.reset();
+            this.gotoSongs();
           })
         });
     }

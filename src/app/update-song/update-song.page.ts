@@ -60,4 +60,8 @@ export class UpdateSongPage implements OnInit {
     }
   }
 
+  gotoSongs() {
+    this.router.navigateByUrl("/songs");
+  }
+
 }

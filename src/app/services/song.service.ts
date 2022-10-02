@@ -9,7 +9,7 @@ export class Song {
   duration: string;
   album: string;
   authors: string;
-  favourite: boolean;
+  // favourite: string;
   cover: string;
 }
 
@@ -68,6 +68,16 @@ export class SongService {
         catchError(this.handleError<Song[]>('Update song'))
       );
   }
+
+  // updateFavourite(id, song: Song): Observable<any> {
+  //   const data = new URLSearchParams();
+  //   data.append("favourite",song.favourite);
+  //   return this.httpClient.put(this.endpoint + '/' + id, data.toString(), this.httpOptions)
+  //     .pipe(
+  //       tap(_ => console.log(`Song updated: ${id}`)),
+  //       catchError(this.handleError<Song[]>('Update song'))
+  //     );
+  // }
 
   deleteSong(id): Observable<Song[]> {
     return this.httpClient.delete<Song[]>(this.endpoint + '/' + id, this.httpOptions)

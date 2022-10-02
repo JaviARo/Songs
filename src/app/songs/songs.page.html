@@ -8,27 +8,32 @@
     <ion-title>Lista de canciones</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar canción"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar canción" animated (ionChange)="searchSongs($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let s of songs">
+    <ion-item *ngFor="let song of searchedSong">
       <ion-label>
-        <img src={{s.cover}}/>
-        <h1>{{s.id}}. {{s.name}}</h1>
-        <p>{{s.duration}}</p>
-        <p>{{s.authors}}</p>
-        <p>{{s.album}}</p>
-        <p>{{s.favourite}}</p>
+        <div class="image">
+          <img src={{song.cover}} />
+        </div>
+        <div class="text">
+          <h1>{{song.name}}</h1>
+          <p>{{song.duration}}</p>
+          <p>{{song.authors}}</p>
+          <p>{{song.album}}</p>
+          <!-- <img src="../../assets/images/{{song.favourite}}.png"/> -->
+          <!-- <p>{{song.favourite}}</p> -->
+        </div>
       </ion-label>
       <div class="item-note" item-end>
-        <button ion-button clear [routerLink]="['/update-song/',s.id]">
-          <ion-icon name="create" style="zoom:1.5"></ion-icon>
+        <button ion-button clear [routerLink]="['/update-song/',song.id]">
+          <ion-icon name="create" style="zoom:2"></ion-icon>
         </button>
-        <button ion-button clear (click)="removeSong(s)">
-          <ion-icon name="trash" style="zoom:1.5"></ion-icon>
+        <button ion-button clear (click)="removeSong(song)">
+          <ion-icon name="trash" style="zoom:2"></ion-icon>
         </button>
       </div>
     </ion-item>

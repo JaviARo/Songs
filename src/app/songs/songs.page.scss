@@ -6,11 +6,15 @@ ion-searchbar {
   --background: rgb(46, 2, 2);
 }
 
-ion-item {
-  --background: rgb(66, 3, 42);
-}
-
-img {
+.image {
   max-width: 6em;
   max-height: 6em;
+  position: absolute;
+  left: 1em;
+
+}
+
+.text {
+  position: relative;
+  left: 9em;
 }
